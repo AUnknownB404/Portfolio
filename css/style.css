@@ -1,0 +1,413 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #21f461;
+  --secondary-color: #4ca771;
+  --tertiary-color: #2d3135;
+  --background-color: #292b2d;
+  --text-color: #e1e5e5;
+  --additional-text-color: #000000;
+  --main-font: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--main-font);
+}
+
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 60px;
+}
+
+.brand-title {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-links a:hover {
+  color: var(--main-color);
+}
+
+.toggle-button {
+  display: none;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.hero .left h1 {
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+
+.hero .left span {
+  color: var(--main-color);
+}
+
+.hero .left p {
+  font-size: 40px;
+}
+
+.hero .left button {
+  background-color: var(--main-color);
+  color: var(--additional-text-color);
+  font-size: 25px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 20px 50px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.hero .left button:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.hero .right .circle {
+  width: 700px;
+  height: 700px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hero .right img {
+  width: 100%;
+}
+
+.skills {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.skills .heading {
+  text-align: center;
+}
+
+.skills .heading h2 {
+  font-size: 60px;
+}
+
+.skills .heading p {
+  font-size: 30px;
+}
+
+.progressbar {
+  width: 300px;
+  height: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+.progress {
+  height: 10px;
+  background-color: var(--main-color);
+  border-radius: 5px;
+}
+
+.progress p {
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+.skills .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+  padding: 0 60px;
+}
+
+.skills .vertical-line {
+  width: 2px;
+  height: 500px;
+  background-color: var(--main-color);
+}
+
+.skills .left,
+.skills .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills .skill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.skills .skill h3 {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.skills .skill img {
+  width: 100px;
+}
+
+@media (max-width: 1440px) {
+  .hero .left h1 {
+    font-size: 50px;
+  }
+
+  .hero .left p {
+    font-size: 25px;
+  }
+
+  .hero .left button {
+    font-size: 20px;
+  }
+
+  .hero .right .circle {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero .left h1 {
+    font-size: 45px;
+  }
+
+  .hero .left p {
+    font-size: 22px;
+  }
+
+  .hero .right .circle {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero .left h1 {
+    font-size: 40px;
+  }
+
+  .hero .left p {
+    font-size: 20px;
+  }
+
+  .hero .left button {
+    font-size: 18px;
+  }
+
+  .hero .right .circle {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-links li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .toggle-button {
+    display: block;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero .left h1 {
+    font-size: 50px;
+  }
+
+  .hero .left p {
+    font-size: 25px;
+  }
+
+  .hero .left button {
+    font-size: 20px;
+  }
+
+  .hero .right .circle {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero .left h1 {
+    font-size: 30px;
+  }
+
+  .hero .left p {
+    font-size: 16px;
+  }
+
+  .hero .left button {
+    font-size: 20px;
+  }
+
+  .hero .right .circle {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero .left h1 {
+    font-size: 20px;
+  }
+
+  .hero .left p {
+    font-size: 12px;
+  }
+
+  .hero .right .circle {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+  }
+
+  .hero .left button {
+    font-size: 14px;
+    padding: 10px 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero .left h1 {
+    font-size: 20px;
+  }
+
+  .hero .left p {
+    font-size: 12px;
+  }
+
+  .hero .right .circle {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+  }
+
+  .hero .left button {
+    font-size: 14px;
+    padding: 10px 30px;
+  }
+}
