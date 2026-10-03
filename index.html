@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Akash Hossen</title>
+    <meta
+      name="description"
+      content="Portfolio of Akash Hossen, a Software Engineering student building web applications with PHP, Laravel, Vue.js, JavaScript and MySQL."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,900;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind setup: dark mode by class + two fonts
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Fraunces', 'serif'],
+              body: ['IBM Plex Sans', 'sans-serif'],
+            },
+          },
+        },
+      };
+      // Apply saved theme before the page shows
+      if (localStorage.getItem('theme') === 'dark')
+        document.documentElement.classList.add('dark');
+    </script>
+  </head>
+
+  <body
+    class="intro-active font-body bg-stone-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100 overflow-x-hidden"
+  >
+    <!-- ================= CINEMATIC INTRO ================= -->
+    <div
+      id="portfolio-intro"
+      class="cinematic-intro fixed inset-0 z-[9999] flex items-center justify-center bg-stone-100 dark:bg-slate-900"
+      aria-hidden="true"
+    >
+      <!-- the lines are added here by JavaScript (see introLines below) -->
+      <div id="intro-lines"></div>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 pt-4">
+      <nav
+        id="navbar"
+        class="navbar relative max-w-6xl mx-auto flex items-center justify-between px-6 py-3 rounded-full border border-transparent"
+      >
+        <a href="#home" class="font-display italic font-semibold text-xl"
+          >Akash<span class="not-italic">Hossen</span></a
+        >
+
+        <ul
+          class="hidden md:flex gap-8 text-sm text-slate-500 dark:text-slate-400"
+        >
+          <li>
+            <a class="hover:text-slate-900 dark:hover:text-white" href="#home"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a class="hover:text-slate-900 dark:hover:text-white" href="#about"
+              >About</a
+            >
+          </li>
+          <li>
+            <a class="hover:text-slate-900 dark:hover:text-white" href="#skills"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a
+              class="hover:text-slate-900 dark:hover:text-white"
+              href="#journey"
+              >Journey</a
+            >
+          </li>
+          <li>
+            <a
+              class="hover:text-slate-900 dark:hover:text-white"
+              href="#projects"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              class="hover:text-slate-900 dark:hover:text-white"
+              href="#contact"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <div class="flex items-center gap-3">
+          <!-- dark mode button -->
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+          >
+            <svg
+              class="w-4 h-4 hidden dark:block"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              class="w-4 h-4 block dark:hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+          </button>
+          <!-- mobile menu button -->
+          <button
+            id="menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+          >
+            <svg
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+          <a
+            href="#contact"
+            class="hidden md:block border border-slate-200 dark:border-slate-700 rounded-full px-5 py-2 text-sm hover:bg-white dark:hover:bg-slate-800"
+            >Let's talk</a
+          >
+        </div>
+
+        <!-- mobile menu -->
+        <ul
+          id="mobile-menu"
+          class="hidden absolute left-0 right-0 top-full mt-2 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg md:hidden"
+        >
+          <li><a class="block px-4 py-3" href="#home">Home</a></li>
+          <li><a class="block px-4 py-3" href="#about">About</a></li>
+          <li><a class="block px-4 py-3" href="#skills">Skills</a></li>
+          <li><a class="block px-4 py-3" href="#journey">Journey</a></li>
+          <li><a class="block px-4 py-3" href="#projects">Projects</a></li>
+          <li><a class="block px-4 py-3" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ================= STAGE (hidden until the intro ends) ================= -->
+    <div class="stage">
+      <main>
+        <!-- ================= HERO ================= -->
+        <section
+          id="home"
+          class="min-h-screen max-w-6xl mx-auto px-5 pt-32 pb-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+        >
+          <div>
+            <h1
+              class="font-display font-black text-6xl md:text-8xl leading-none"
+            >
+              <span class="row"><span>Akash</span></span>
+              <span class="row"><span class="outline-text">Hossen</span></span>
+            </h1>
+            <p
+              class="flex items-center gap-3 my-6 text-slate-500 dark:text-slate-400"
+            >
+              <span class="w-8 h-px bg-slate-400"></span>
+              <strong class="font-medium text-slate-900 dark:text-slate-100"
+                >Full-Stack Developer</strong
+              >
+            </p>
+            <p
+              class="max-w-md mb-8 leading-relaxed text-slate-500 dark:text-slate-400"
+            >
+              I'm Md Akash Hossen, a Software Engineering student at Daffodil
+              International University and an aspiring full-stack developer. I
+              build practical web applications with PHP, Laravel, Vue.js,
+              JavaScript, and MySQL, focusing on clear interfaces and useful
+              functionality.
+            </p>
+            <div class="flex flex-wrap items-center gap-6">
+              <a
+                href="#contact"
+                class="bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 px-7 py-3 rounded-full font-medium shadow-lg hover:-translate-y-0.5 transition"
+                >Let's talk</a
+              >
+              <!-- social icons: remove "hidden" after you add your real links -->
+              <div class="flex gap-3">
+                <a
+                  href="#"
+                  hidden
+                  aria-label="X"
+                  class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-700 rounded-full bg-white dark:bg-slate-800"
+                  ><svg viewBox="0 0 24 24" class="w-4 h-4">
+                    <path
+                      fill="currentColor"
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                    /></svg
+                ></a>
+                <a
+                  href="#"
+                  hidden
+                  aria-label="Instagram"
+                  class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-700 rounded-full bg-white dark:bg-slate-800"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    class="w-4 h-4"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" /></svg
+                ></a>
+                <a
+                  href="#"
+                  hidden
+                  aria-label="LinkedIn"
+                  class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-slate-700 rounded-full bg-white dark:bg-slate-800"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    class="w-4 h-4"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <line x1="8" y1="10" x2="8" y2="16" />
+                    <line x1="8" y1="7" x2="8" y2="7.01" />
+                    <line x1="12" y1="16" x2="12" y2="10" />
+                    <path
+                      d="M12 12.5c0-1.5 1-2.5 2.3-2.5S17 11 17 12.5V16"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- profile image + floating badges -->
+          <div
+            class="relative w-full max-w-md lg:max-w-xl mx-auto lg:ml-auto aspect-square"
+          >
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <span
+              class="float absolute top-[10%] left-[8%] z-10 w-14 h-14 flex items-center justify-center text-sm font-semibold rounded-2xl -rotate-12 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow"
+              >&lt;/&gt;</span
+            >
+            <span
+              class="float absolute top-[5%] right-[8%] z-10 w-14 h-14 flex items-center justify-center text-sm font-semibold rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow"
+              >{ }</span
+            >
+            <span
+              class="float absolute bottom-[18%] right-0 z-10 w-16 h-10 flex items-center justify-center text-sm font-semibold rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow"
+              >API</span
+            >
+            <span
+              class="float absolute top-[40%] left-0 w-3 h-3 rounded-full bg-slate-900 dark:bg-slate-100"
+            ></span>
+            <span
+              class="float absolute bottom-[7%] right-[22%] w-3 h-3 rounded-full bg-slate-500"
+            ></span>
+            <img
+              src="./Zero.png"
+              alt="Portrait of Akash Hossen"
+              class="w-full h-full object-cover drop-shadow-xl"
+            />
+          </div>
+
+          <!-- scroll down -->
+          <div
+            class="hidden lg:flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 lg:col-span-2"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-slate-900 dark:bg-slate-100"
+            ></span>
+            Scroll down — more below
+          </div>
+        </section>
+
+        <!-- ================= ABOUT ================= -->
+        <section id="about" class="relative max-w-6xl mx-auto px-5 py-20">
+          <span
+            class="absolute top-4 left-1/2 -translate-x-1/2 font-display font-black text-7xl md:text-[10rem] leading-none text-black/5 dark:text-white/5 select-none pointer-events-none"
+            >ABOUT</span
+          >
+          <div
+            class="relative grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-8 items-center pt-10"
+          >
+            <div>
+              <span
+                class="inline-flex items-center gap-2 pr-4 p-1 mb-4 text-sm rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                ><span
+                  class="w-7 h-7 flex items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold"
+                  >01</span
+                >
+                About Me</span
+              >
+              <h2
+                class="font-display font-semibold text-3xl md:text-5xl leading-tight mb-6"
+              >
+                I build <em class="font-medium">useful web</em> products from
+                idea to implementation.
+              </h2>
+              <p
+                class="font-display italic text-xl md:text-2xl leading-snug mb-5 pl-5 border-l-2 border-slate-900 dark:border-slate-100"
+              >
+                I enjoy turning ideas into useful web applications—connecting
+                thoughtful interfaces with reliable backend logic.
+              </p>
+              <p
+                class="max-w-lg mb-6 leading-relaxed text-slate-500 dark:text-slate-400"
+              >
+                I'm a Software Engineering student and full-stack development
+                learner. My work so far includes CRUD-based systems,
+                authentication, database-driven workflows, and responsive
+                interfaces using Laravel, Vue 3, Inertia.js, and Tailwind CSS.
+              </p>
+              <div class="flex flex-wrap items-center gap-5">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center"
+                    ><span
+                      class="w-7 h-7 rounded-full bg-slate-900 dark:bg-slate-100"
+                    ></span
+                  ></span>
+                  <div
+                    class="flex flex-col text-sm text-slate-500 dark:text-slate-400"
+                  >
+                    <strong
+                      class="font-display font-semibold text-slate-900 dark:text-slate-100"
+                      >Learning since 2022</strong
+                    >
+                    <span>From fundamentals to full-stack</span>
+                  </div>
+                </div>
+                <a
+                  href="./professional_CV.pdf"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:-translate-y-0.5 transition"
+                  >↓ Download Resume</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="mx-auto w-full max-w-sm p-3 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-md"
+            >
+              <img
+                src="./About.jpg"
+                alt="Akash Hossen smiling at the camera"
+                loading="lazy"
+                class="w-full aspect-[4/5] object-cover rounded-2xl"
+              />
+              <p class="mt-4 mb-1 text-center font-display italic text-2xl">
+                Akash Hossen
+              </p>
+            </div>
+          </div>
+
+          <!-- stats -->
+          <div
+            class="relative flex flex-wrap items-baseline gap-10 mt-12 py-6 border-y border-slate-200 dark:border-slate-700"
+          >
+            <div class="flex items-baseline gap-2">
+              <span class="font-display font-black text-4xl">4</span
+              ><span class="text-sm text-slate-500 dark:text-slate-400"
+                >Years learning</span
+              >
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display font-black text-4xl">4</span
+              ><span class="text-sm text-slate-500 dark:text-slate-400"
+                >Projects built</span
+              >
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display font-black text-4xl">9</span
+              ><span class="text-sm text-slate-500 dark:text-slate-400"
+                >Technologies used</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SKILLS ================= -->
+        <section id="skills" class="relative max-w-6xl mx-auto px-5 py-20">
+          <span
+            class="absolute top-4 left-1/2 -translate-x-1/2 font-display font-black text-7xl md:text-[10rem] leading-none text-black/5 dark:text-white/5 select-none pointer-events-none"
+            >SKILLS</span
+          >
+          <div class="relative pt-10">
+            <span
+              class="inline-flex items-center gap-2 pr-4 p-1 mb-4 text-sm rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+              ><span
+                class="w-7 h-7 flex items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold"
+                >02</span
+              >
+              Skills</span
+            >
+            <h2 class="font-display font-semibold text-3xl md:text-5xl mb-10">
+              What I <em class="font-medium">work</em> with.
+            </h2>
+          </div>
+
+          <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Frontend -->
+            <div
+              class="p-7 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <h3 class="font-display font-semibold text-xl mb-5">Frontend</h3>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                  <span>Vue.js</span><span>90%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[90%]"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                  <span>JavaScript</span><span>70%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[70%]"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span>HTML / CSS</span><span>85%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[85%]"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <!-- Backend -->
+            <div
+              class="p-7 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <h3 class="font-display font-semibold text-xl mb-5">Backend</h3>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                  <span>PHP / Laravel</span><span>85%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[85%]"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                  <span>REST APIs</span><span>80%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[80%]"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span>MySQL</span><span>78%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[78%]"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <!-- Design & Tools -->
+            <div
+              class="p-7 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <h3 class="font-display font-semibold text-xl mb-5">
+                Design &amp; Tools
+              </h3>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                  <span>Tailwind CSS</span><span>75%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[75%]"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="flex justify-between text-sm mb-2">
+                  <span>Git &amp; GitHub</span><span>88%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[88%]"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span>Inertia.js</span><span>70%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-full rounded-full bg-slate-900 dark:bg-slate-100 w-[70%]"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- technology marquee (the JS at the bottom copies the list once so it loops) -->
+          <div
+            class="relative overflow-hidden my-12 py-5 border-y border-slate-200 dark:border-slate-700"
+            role="group"
+            aria-label="Technology logos"
+          >
+            <div class="marquee-track flex w-max">
+              <ul
+                id="logo-list"
+                class="flex items-center gap-12 px-6 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400"
+              >
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vuejs/vuejs-original.svg"
+                  />Vue.js
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg"
+                  />JavaScript
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg"
+                  />CSS
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg"
+                  />HTML
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg"
+                  />Tailwind CSS
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/laravel/laravel-original.svg"
+                  />Laravel
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-plain.svg"
+                  />PHP
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg"
+                  />MySQL
+                </li>
+                <li class="flex items-center gap-2">Inertia.js</li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/figma/figma-original.svg"
+                  />Figma
+                </li>
+                <li class="flex items-center gap-2">
+                  <img
+                    class="w-7 h-7"
+                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg"
+                  />Git
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- more about me: certifications, soft skills, languages -->
+          <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="p-7 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <h3 class="font-display font-semibold text-xl mb-5">
+                Certifications
+              </h3>
+              <ul class="grid gap-4 text-sm">
+                <li>
+                  <strong class="block font-medium"
+                    >Web Development Fundamentals</strong
+                  ><span class="text-slate-500 dark:text-slate-400">Ostad</span>
+                </li>
+                <li>
+                  <strong class="block font-medium"
+                    >Laravel &amp; Vue.js Bootcamp</strong
+                  ><span class="text-slate-500 dark:text-slate-400">Ostad</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="p-7 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <h3 class="font-display font-semibold text-xl mb-5">
+                Soft Skills
+              </h3>
+              <ul
+                class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+              >
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900"
+                >
+                  Problem-Solving
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900"
+                >
+                  Team Collaboration
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900"
+                >
+                  Time Management
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900"
+                >
+                  Adaptability
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900"
+                >
+                  Attention to Detail
+                </li>
+              </ul>
+            </div>
+            <div
+              class="p-7 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <h3 class="font-display font-semibold text-xl mb-5">Languages</h3>
+              <ul class="grid gap-4 text-sm">
+                <li class="flex justify-between">
+                  <strong class="font-medium">Bengali</strong
+                  ><span class="text-slate-500 dark:text-slate-400"
+                    >Native</span
+                  >
+                </li>
+                <li class="flex justify-between">
+                  <strong class="font-medium">English</strong
+                  ><span class="text-slate-500 dark:text-slate-400"
+                    >Intermediate</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= JOURNEY ================= -->
+        <section id="journey" class="relative max-w-6xl mx-auto px-5 py-20">
+          <span
+            class="absolute top-4 left-1/2 -translate-x-1/2 font-display font-black text-7xl md:text-[10rem] leading-none text-black/5 dark:text-white/5 select-none pointer-events-none"
+            >JOURNEY</span
+          >
+          <div class="relative pt-10">
+            <span
+              class="inline-flex items-center gap-2 pr-4 p-1 mb-4 text-sm rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+              ><span
+                class="w-7 h-7 flex items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold"
+                >03</span
+              >
+              Journey</span
+            >
+            <h2 class="font-display font-semibold text-3xl md:text-5xl mb-10">
+              My <em class="font-medium">journey</em> so far.
+            </h2>
+          </div>
+
+          <!-- vertical line is the left border of this box -->
+          <div
+            class="relative max-w-xl ml-2.5 pl-10 border-l border-slate-300 dark:border-slate-600 flex flex-col gap-10"
+          >
+            <div class="relative">
+              <span
+                class="absolute -left-[3.1rem] top-0 w-5 h-5 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 flex items-center justify-center"
+                ><span
+                  class="w-2 h-2 rounded-full bg-slate-900 dark:bg-slate-100"
+                ></span
+              ></span>
+              <span class="font-display font-semibold text-xs"
+                >2024 — Present</span
+              >
+              <h3 class="font-display font-semibold text-lg">
+                Software Engineering Student
+              </h3>
+              <p class="text-sm mb-2 text-slate-500 dark:text-slate-400">
+                @ Daffodil International University
+              </p>
+              <p
+                class="text-sm leading-relaxed mb-3 text-slate-500 dark:text-slate-400"
+              >
+                Studying Software Engineering while building practical web
+                applications and strengthening full-stack development skills.
+              </p>
+              <ul
+                class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+              >
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  Leadership
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  Architecture
+                </li>
+              </ul>
+            </div>
+            <div class="relative">
+              <span
+                class="absolute -left-[3.1rem] top-0 w-5 h-5 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 flex items-center justify-center"
+                ><span
+                  class="w-2 h-2 rounded-full bg-slate-900 dark:bg-slate-100"
+                ></span
+              ></span>
+              <span class="font-display font-semibold text-xs"
+                >2023 — 2024</span
+              >
+              <h3 class="font-display font-semibold text-lg">
+                Full-Stack Development Learner
+              </h3>
+              <p class="text-sm mb-2 text-slate-500 dark:text-slate-400">
+                @ Daffodil International University
+              </p>
+              <p
+                class="text-sm leading-relaxed mb-3 text-slate-500 dark:text-slate-400"
+              >
+                Completed an intensive Ostad training journey in PHP, Laravel,
+                and Vue.js, applying the skills through hands-on projects.
+              </p>
+              <ul
+                class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+              >
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  Laravel
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  Vue.js
+                </li>
+              </ul>
+            </div>
+            <div class="relative">
+              <span
+                class="absolute -left-[3.1rem] top-0 w-5 h-5 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 flex items-center justify-center"
+                ><span
+                  class="w-2 h-2 rounded-full bg-slate-900 dark:bg-slate-100"
+                ></span
+              ></span>
+              <span class="font-display font-semibold text-xs"
+                >2022 — 2023</span
+              >
+              <h3 class="font-display font-semibold text-lg">
+                Junior Full-Stack Development Learner
+              </h3>
+              <p class="text-sm mb-2 text-slate-500 dark:text-slate-400">
+                @ Daffodil International University
+              </p>
+              <p
+                class="text-sm leading-relaxed mb-3 text-slate-500 dark:text-slate-400"
+              >
+                Started learning web development fundamentals and progressed
+                toward building database-driven applications.
+              </p>
+              <ul
+                class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+              >
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  JavaScript
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  CSS
+                </li>
+              </ul>
+            </div>
+            <div class="relative">
+              <span
+                class="absolute -left-[3.1rem] top-0 w-5 h-5 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 flex items-center justify-center"
+                ><span
+                  class="w-2 h-2 rounded-full bg-slate-900 dark:bg-slate-100"
+                ></span
+              ></span>
+              <span class="font-display font-semibold text-xs">2022</span>
+              <h3 class="font-display font-semibold text-lg">
+                Started learning to code
+              </h3>
+              <p class="text-sm mb-2 text-slate-500 dark:text-slate-400">
+                Self-taught — nights and weekends
+              </p>
+              <p
+                class="text-sm leading-relaxed mb-3 text-slate-500 dark:text-slate-400"
+              >
+                Began learning web development, then advanced through HTML, CSS,
+                JavaScript, PHP, and Laravel.
+              </p>
+              <ul
+                class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+              >
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  Self-taught
+                </li>
+                <li
+                  class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                >
+                  Foundations
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PROJECTS ================= -->
+        <section id="projects" class="relative max-w-6xl mx-auto px-5 py-20">
+          <span
+            class="absolute top-4 left-1/2 -translate-x-1/2 font-display font-black text-7xl md:text-[10rem] leading-none text-black/5 dark:text-white/5 select-none pointer-events-none"
+            >PROJECTS</span
+          >
+          <div class="relative pt-10">
+            <span
+              class="inline-flex items-center gap-2 pr-4 p-1 mb-4 text-sm rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+              ><span
+                class="w-7 h-7 flex items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold"
+                >04</span
+              >
+              Projects</span
+            >
+            <h2 class="font-display font-semibold text-3xl md:text-5xl mb-10">
+              Selected <em class="font-medium">work</em> I'm proud of.
+            </h2>
+          </div>
+
+          <!-- Click a row to open/close its details -->
+          <div class="relative border-t border-slate-200 dark:border-slate-700">
+            <div
+              class="project-row border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer hover:bg-white/60 dark:hover:bg-slate-800/60"
+            >
+              <div class="flex flex-col md:flex-row md:items-center gap-3">
+                <span class="font-display italic">01</span>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-xl">
+                    Sales &amp; Invoice Management System
+                  </h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">
+                    A full-stack sales system for managing products, customers,
+                    categories, sales, and invoices.
+                  </p>
+                </div>
+                <ul
+                  class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+                >
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    Laravel
+                  </li>
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    Vue.js
+                  </li>
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    MySQL
+                  </li>
+                </ul>
+              </div>
+              <div
+                data-features="Product, customer, and category CRUD|Sales and invoice workflow|Search, sorting, and sales reporting"
+                class="project-details hidden grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6"
+              >
+                <img
+                  src="./dashboard.jpg"
+                  alt="Sales & Invoice Management System screenshot"
+                  loading="lazy"
+                  class="w-full aspect-[16/10] object-cover rounded-2xl"
+                />
+                <div>
+                  <span class="text-xs">Featured · Full-stack</span>
+                  <h3 class="font-display font-black text-3xl my-2">
+                    Sales &amp; Invoice Management System
+                  </h3>
+                  <p class="leading-relaxed text-slate-500 dark:text-slate-400">
+                    Product, customer, and category CRUD, a sales and invoice
+                    workflow, plus search, sorting, and sales reporting.
+                  </p>
+                  <button
+                    type="button"
+                    class="feature-link mt-4 font-medium hover:underline"
+                  >
+                    View case study <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-row border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer hover:bg-white/60 dark:hover:bg-slate-800/60"
+            >
+              <div class="flex flex-col md:flex-row md:items-center gap-3">
+                <span class="font-display italic">02</span>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-xl">
+                    Car Rental Management System
+                  </h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">
+                    A rental platform concept with separate admin and customer
+                    workflows for managing cars and bookings.
+                  </p>
+                </div>
+                <ul
+                  class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+                >
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    Laravel
+                  </li>
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    MySQL
+                  </li>
+                </ul>
+              </div>
+              <div
+                data-features="Car and rental management|Admin and customer roles|Rental workflow"
+                class="project-details hidden grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6"
+              >
+                <img
+                  src="./dashboard.jpg"
+                  alt="Car Rental Management System screenshot"
+                  loading="lazy"
+                  class="w-full aspect-[16/10] object-cover rounded-2xl"
+                />
+                <div>
+                  <span class="text-xs">Product · Growth</span>
+                  <h3 class="font-display font-black text-3xl my-2">
+                    Car Rental Management System
+                  </h3>
+                  <p class="leading-relaxed text-slate-500 dark:text-slate-400">
+                    A car rental application planned with role-based dashboards,
+                    car listings, and rental management.
+                  </p>
+                  <button
+                    type="button"
+                    class="feature-link mt-4 font-medium hover:underline"
+                  >
+                    View case study <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-row border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer hover:bg-white/60 dark:hover:bg-slate-800/60"
+            >
+              <div class="flex flex-col md:flex-row md:items-center gap-3">
+                <span class="font-display italic">03</span>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-xl">
+                    Personal Portfolio Website
+                  </h3>
+                </div>
+                <ul
+                  class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+                >
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    HTML / CSS / JavaScript
+                  </li>
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    Tailwind CSS
+                  </li>
+                </ul>
+              </div>
+              <div
+                data-features="Responsive portfolio sections|Skills and project presentation|Contact information"
+                class="project-details hidden grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6"
+              >
+                <img
+                  src="./dashboard.jpg"
+                  alt="Personal Portfolio Website screenshot"
+                  loading="lazy"
+                  class="w-full aspect-[16/10] object-cover rounded-2xl"
+                />
+                <div>
+                  <span class="text-xs">Operations · Dashboard</span>
+                  <h3 class="font-display font-black text-3xl my-2">
+                    Personal Portfolio Website
+                  </h3>
+                  <p class="leading-relaxed text-slate-500 dark:text-slate-400">
+                    A personal portfolio presenting my background, skills, and
+                    selected development projects.
+                  </p>
+                  <button
+                    type="button"
+                    class="feature-link mt-4 font-medium hover:underline"
+                  >
+                    View case study <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-row border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer hover:bg-white/60 dark:hover:bg-slate-800/60"
+            >
+              <div class="flex flex-col md:flex-row md:items-center gap-3">
+                <span class="font-display italic">04</span>
+                <div class="flex-1">
+                  <h3 class="font-display font-semibold text-xl">
+                    AI Tourism Platform Concept
+                  </h3>
+                </div>
+                <ul
+                  class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400"
+                >
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    AI concept
+                  </li>
+                  <li
+                    class="px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                  >
+                    Maps
+                  </li>
+                </ul>
+              </div>
+              <div
+                data-features="Personalized destination discovery|Map-based place exploration|Trip planning concept"
+                class="project-details hidden grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6"
+              >
+                <img
+                  src="./dashboard.jpg"
+                  alt="AI Tourism Platform Concept screenshot"
+                  loading="lazy"
+                  class="w-full aspect-[16/10] object-cover rounded-2xl"
+                />
+                <div>
+                  <span class="text-xs">Design system · UX</span>
+                  <h3 class="font-display font-black text-3xl my-2">
+                    AI Tourism Platform Concept
+                  </h3>
+                  <p class="leading-relaxed text-slate-500 dark:text-slate-400">
+                    An in-progress tourism platform concept for personalized
+                    destination discovery, trip planning, maps, and nearby
+                    hotels and restaurants.
+                  </p>
+                  <button
+                    type="button"
+                    class="feature-link mt-4 font-medium hover:underline"
+                  >
+                    View case study <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section
+          id="contact"
+          class="relative max-w-6xl mx-auto px-5 pt-24 pb-6 overflow-hidden"
+        >
+          <span
+            class="absolute top-4 left-1/2 -translate-x-1/2 font-display font-black text-7xl md:text-[10rem] leading-none text-black/5 dark:text-white/5 select-none pointer-events-none"
+            >CONTACT</span
+          >
+          <div
+            class="relative grid grid-cols-1 md:grid-cols-2 gap-10 mt-24 md:mt-40"
+          >
+            <div>
+              <span
+                class="inline-flex items-center gap-2 pr-4 p-1 text-sm rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                ><span
+                  class="w-7 h-7 flex items-center justify-center rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                    class="w-3.5 h-3.5"
+                  >
+                    <path d="M4 5h16v11H9l-5 4z" /></svg></span
+                >05. Contact</span
+              >
+              <h2 class="font-display font-black text-5xl mt-5 mb-3">
+                Get in <em class="font-medium">touch</em>
+              </h2>
+              <p
+                class="max-w-xs mb-8 leading-relaxed text-slate-500 dark:text-slate-400"
+              >
+                Have an idea, a question, or a project in mind? Send a message
+                and I'll get back to you soon.
+              </p>
+
+              <div class="grid gap-3">
+                <a
+                  href="mailto:mdakashhossen.dev@gmail.com"
+                  class="flex items-center gap-4 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:-translate-y-0.5 transition"
+                >
+                  <span
+                    class="w-11 h-11 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-5 h-5"
+                    >
+                      <rect x="3" y="5" width="18" height="14" rx="3" />
+                      <path d="M4 7l8 6 8-6" /></svg
+                  ></span>
+                  <span class="flex-1 min-w-0"
+                    ><strong class="block text-sm">Email me</strong
+                    ><span
+                      class="text-sm text-slate-500 dark:text-slate-400 break-words"
+                      >mdakashhossen.dev@gmail.com</span
+                    ></span
+                  >
+                  <span
+                    class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-700"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-4 h-4"
+                    >
+                      <path d="M7 17L17 7M8 7h9v9" /></svg
+                  ></span>
+                </a>
+                <a
+                  href="tel:+8801973207198"
+                  class="flex items-center gap-4 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:-translate-y-0.5 transition"
+                >
+                  <span
+                    class="w-11 h-11 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-5 h-5"
+                    >
+                      <path
+                        d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
+                      /></svg
+                  ></span>
+                  <span class="flex-1 min-w-0"
+                    ><strong class="block text-sm">Call me</strong
+                    ><span class="text-sm text-slate-500 dark:text-slate-400"
+                      >+8801973207198</span
+                    ></span
+                  >
+                  <span
+                    class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-700"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-4 h-4"
+                    >
+                      <path d="M7 17L17 7M8 7h9v9" /></svg
+                  ></span>
+                </a>
+                <a
+                  href="#contact"
+                  class="flex items-center gap-4 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:-translate-y-0.5 transition"
+                >
+                  <span
+                    class="w-11 h-11 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-5 h-5"
+                    >
+                      <path
+                        d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"
+                      />
+                      <circle cx="12" cy="10" r="2.5" /></svg
+                  ></span>
+                  <span class="flex-1 min-w-0"
+                    ><strong class="block text-sm">Location</strong
+                    ><span class="text-sm text-slate-500 dark:text-slate-400"
+                      >Baipail, Ashulia, Savar, Dhaka, Bangladesh</span
+                    ></span
+                  >
+                  <span
+                    class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-700"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="w-4 h-4"
+                    >
+                      <path d="M7 17L17 7M8 7h9v9" /></svg
+                  ></span>
+                </a>
+              </div>
+            </div>
+
+            <form
+              id="contactForm"
+              class="flex flex-col gap-3 p-3 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                aria-label="Name"
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 placeholder:text-slate-400"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                aria-label="Email"
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 placeholder:text-slate-400"
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                aria-label="Message"
+                class="w-full flex-1 min-h-[200px] px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 placeholder:text-slate-400"
+              ></textarea>
+              <button
+                type="submit"
+                class="py-3.5 rounded-xl font-semibold bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 hover:-translate-y-0.5 transition"
+              >
+                Submit
+              </button>
+              <p
+                id="formStatus"
+                class="min-h-[1.2em] px-1 text-sm text-slate-500 dark:text-slate-400"
+                role="status"
+              ></p>
+            </form>
+          </div>
+
+          <footer
+            class="relative flex flex-wrap justify-between gap-3 mt-20 pt-5 border-t border-slate-200 dark:border-slate-700 text-sm text-slate-500 dark:text-slate-400"
+          >
+            <span>© 2026 Md Akash Hossen</span>
+            <a href="#home" class="hover:text-slate-900 dark:hover:text-white"
+              >Back to top ↑</a
+            >
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <!-- ================= CASE STUDY PAGE ================= -->
+    <dialog
+      id="case-study-modal"
+      class="w-full max-w-none h-full max-h-none m-0 p-0 overflow-y-auto border-0 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100"
+      aria-labelledby="case-study-title"
+    >
+      <!-- top bar -->
+      <div
+        class="sticky top-0 z-10 flex items-center justify-between gap-6 px-6 md:px-16 py-4 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+      >
+        <button
+          id="case-close"
+          type="button"
+          class="flex items-center gap-2 text-xs uppercase font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+        >
+          <span class="text-lg">←</span> Back to projects
+        </button>
+        <!-- pagination: previous / current of total / next -->
+        <div
+          class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400"
+        >
+          <button
+            id="case-prev"
+            type="button"
+            aria-label="Previous project"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+          >
+            ←
+          </button>
+          <span id="case-current" class="text-slate-900 dark:text-slate-100"
+            >01</span
+          ><span class="w-8 h-px bg-slate-300 dark:bg-slate-600"></span
+          ><span id="case-total">04</span>
+          <button
+            id="case-next"
+            type="button"
+            aria-label="Next project"
+            class="w-9 h-9 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-6 md:px-16">
+        <!-- hero -->
+        <section
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12 md:py-20 border-b border-slate-200 dark:border-slate-700"
+        >
+          <div>
+            <span id="case-category" class="text-xs"></span>
+            <h2
+              id="case-study-title"
+              class="font-display font-semibold text-4xl md:text-6xl leading-none mt-3 mb-5"
+            ></h2>
+            <p
+              id="case-description"
+              class="max-w-lg leading-relaxed text-slate-500 dark:text-slate-400"
+            ></p>
+            <ul id="case-chips" class="flex flex-wrap gap-2 mt-6"></ul>
+            <div class="flex flex-wrap gap-4 mt-7">
+              <a
+                id="case-live"
+                hidden
+                class="px-4 py-3 text-xs uppercase font-medium bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
+                >View Live ↗</a
+              >
+              <a
+                id="case-repo"
+                hidden
+                class="px-4 py-3 text-xs uppercase font-medium border border-slate-300 dark:border-slate-600"
+                >GitHub Repository ↗</a
+              >
+            </div>
+          </div>
+          <div
+            class="p-3 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+          >
+            <img
+              id="case-image"
+              alt=""
+              class="w-full aspect-[16/10] object-cover rounded-xl"
+            />
+          </div>
+        </section>
+
+        <!-- overview -->
+        <section
+          class="grid grid-cols-1 lg:grid-cols-3 gap-10 py-12 border-b border-slate-200 dark:border-slate-700"
+        >
+          <article>
+            <h2 class="font-semibold text-lg mb-4">About the Project</h2>
+            <p
+              id="case-about"
+              class="leading-relaxed text-slate-500 dark:text-slate-400"
+            ></p>
+          </article>
+          <article>
+            <h2 class="font-semibold text-lg mb-4">Key Features</h2>
+            <ul id="case-features" class="grid gap-3"></ul>
+          </article>
+          <aside
+            class="p-5 h-fit rounded-md border border-slate-200 dark:border-slate-700"
+          >
+            <h2 class="font-semibold text-lg mb-3">Project Details</h2>
+            <dl id="case-details" class="m-0"></dl>
+          </aside>
+        </section>
+
+        <!-- preview -->
+        <section class="py-12 pb-20">
+          <span id="case-gallery-label" class="block text-xs mb-2"
+            >Project screenshot</span
+          >
+          <h2 class="font-display font-semibold text-3xl mb-5">
+            Project Preview
+          </h2>
+          <div
+            id="case-gallery"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          ></div>
+        </section>
+      </div>
+    </dialog>
+
+    <!-- ================= JAVASCRIPT (simple) ================= -->
+    <script src="./script.js"></script>
+  </body>
+</html>
