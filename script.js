@@ -223,13 +223,44 @@ checkScroll();
 
 // 7. Scroll reveal: add the "reveal" class now, show it when it enters the screen
 var revealItems = document.querySelectorAll(
-  'section h2, section .rounded-3xl, section .rounded-2xl, .project-row'
+  'main > section, main > section h2, main > section .rounded-3xl, main > section .rounded-2xl, main > section .project-row, #journey .journey-item'
 );
 revealItems.forEach(function (item) {
   item.classList.add('reveal');
 });
 
+document.querySelectorAll('main > section').forEach(function (section) {
+  section
+    .querySelectorAll('h2, .rounded-3xl, .rounded-2xl, .project-row')
+    .forEach(function (item, index) {
+      item.style.setProperty(
+        '--reveal-delay',
+        Math.min((index + 1) * 70, 350) + 'ms'
+      );
+    });
+});
+
+document.querySelectorAll('#journey .journey-item').forEach(function (item, index) {
+  item.style.setProperty(
+    '--reveal-delay',
+    Math.min((index + 1) * 110, 420) + 'ms'
+  );
+});
+
+document
+  .querySelectorAll('#skills .skill-progress')
+  .forEach(function (bar, index) {
+    bar.style.setProperty('--skill-delay', index * 90 + 'ms');
+  });
+
 function startScrollReveal() {
+  if (!('IntersectionObserver' in window)) {
+    revealItems.forEach(function (item) {
+      item.classList.add('revealed');
+    });
+    return;
+  }
+
   var watcher = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
@@ -239,7 +270,7 @@ function startScrollReveal() {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
   revealItems.forEach(function (item) {
     watcher.observe(item);
